@@ -26,18 +26,30 @@ def prefix_evaluate(prefix_equation: Union[List[str], str]) -> Optional[int]:
     return value_stack[0]
 
 
-def to_prefix(equation: str) -> str:
-    op_stack = []
-    prefix = []
-
-    for el in equation.split()[::-1]:
-        pass
-
-    while op_stack:
-        prefix.append(op_stack.pop())
-
-    return " ".join(prefix[::-1])
-
+def to_prefix(equation: str) -> str:  
+    prior = {'+': 1, '-': 1, '*': 2, '/': 2} 
+    total = [] 
+    stack = [] 
+    
+    for el in equation.split()[::-1]: 
+        if el not in '+-*/': 
+            if (el != '(') and (el != ')'): 
+                total.append(el) 
+            if el == '(': 
+                while stack and stack[-1]!=')':  
+                    total.append(stack.pop()) 
+                stack.pop() 
+            if el == ')':  
+               stack.append(el)    
+        if el in '+-*/': 
+            while stack and stack[-1]!=')' and prior[el]<=prior.get(stack[-1], 0):  
+                total.append(stack.pop()) 
+            stack.append(el) 
+            
+    while stack: 
+        total.append(stack.pop()) 
+ 
+    return " ".join(total[::-1]) 
 
 def calculate(equation: str) -> int:
     return prefix_evaluate(to_prefix(equation))
