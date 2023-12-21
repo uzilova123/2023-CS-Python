@@ -22,9 +22,9 @@ class Person:
     bday: date
 
     def __init__(self, name: str, surname: str, sex: str, bday: date):
-        self.name=name
-        self.surname=surname
-        self.sex= sex
+        self.name = name
+        self.surname = surname
+        self.sex = sex
         if isinstance(bday, date):
             self.bday: date = bday
         else:
@@ -35,7 +35,7 @@ class Person:
 
     def __eq__(self, other: "Person") -> bool:
         return self.name == other.name and self.surname == other.surname and self.sex == other.sex and self.bday == other.bday
-    
+
     def full_ages(self):
         return date.today().year - self.bday.year
 
