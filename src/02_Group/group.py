@@ -1,4 +1,4 @@
-from datetime import date, datetime, timezone
+from datetime import date
 from typing import List
 
 
@@ -34,7 +34,12 @@ class Person:
         return f"Person({self.name!r}, {self.surname!r}, {self.sex!r}, {self.bday!r})"
 
     def __eq__(self, other: "Person") -> bool:
-        return self.name == other.name and self.surname == other.surname and self.sex == other.sex and self.bday == other.bday
+        return (
+            self.name == other.name
+            and self.surname == other.surname
+            and self.sex == other.sex
+            and self.bday == other.bday
+        )
 
     def full_ages(self):
         return date.today().year - self.bday.year
