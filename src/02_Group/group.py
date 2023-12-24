@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime, timezone
 from typing import List
 
 
@@ -65,7 +65,7 @@ class Student(Person):
         self.skill = skill
 
     def __repr__(self) -> str:
-        return f"Student({self.name!r},{self.surname!r},{self.sex!r},{self.bday!r},{self.group!r},{self.skill!r})"
+        return f"Student({self.name!r}, {self.surname!r}, {self.sex!r}, {self.bday!r}, {self.group!r}, {self.skill!r})"
 
     def __eq__(self, other: "Student") -> bool:
         return self.__repr__() == other.__repr__()
