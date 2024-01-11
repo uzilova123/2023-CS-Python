@@ -1,4 +1,4 @@
-from typing import ClassVar  # noqa: I001
+from typing import ClassVar
 from ocean import Ocean
 
 
