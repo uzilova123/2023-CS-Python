@@ -43,12 +43,7 @@ class Ocean:
                         k_fish += 1
                     elif self.state[n_i][n_k] == shrimp:
                         k_shrimp += 1
-                if k_fish == fish and k_shrimp == shrimp:
-                    new_r.append(2)
-                elif k_fish == 3:
-                    new_r.append(2)
-                else:
-                    new_r.append(0)
+
                 if self.state[i][k] == fish:
                     if k_fish < 2 or k_fish > 3:
                         new_r.append(0)
@@ -59,6 +54,12 @@ class Ocean:
                         new_r.append(0)
                     else:
                         new_r.append(3)
+                elif k_fish == fish and k_shrimp == shrimp:
+                    new_r.append(2)
+                elif k_fish == 3:
+                    new_r.append(2)
+                else:
+                    new_r.append(0)
 
             new_state.append(new_r)
 
