@@ -27,39 +27,39 @@ class Ocean:
                     k_fish = 0
                     k_shrimp = 0
                     sosed = [
-                    (i - 1, k - 1),
-                    (i - 1, k),
-                    (i - 1, k + 1),
-                    (i, k - 1),
-                    (i, k + 1),
-                    (i + 1, k - 1),
-                    (i + 1, k),
-                    (i + 1, k + 1),
-                ]
-                for n_i, n_k in sosed:
-                    if n_i < 0 or n_k < 0 or n_i >= len(self.state) or n_k >= len(self.state[i]):
-                        continue
-                    if self.state[n_i][n_k] == fish:
-                        k_fish += 1
-                    elif self.state[n_i][n_k] == shrimp:
-                        k_shrimp += 1
+                        (i - 1, k - 1),
+                        (i - 1, k),
+                        (i - 1, k + 1),
+                        (i, k - 1),
+                        (i, k + 1),
+                        (i + 1, k - 1),
+                        (i + 1, k),
+                        (i + 1, k + 1),
+                    ]
+                    for n_i, n_k in sosed:
+                        if n_i < 0 or n_k < 0 or n_i >= len(self.state) or n_k >= len(self.state[i]):
+                            continue
+                        if self.state[n_i][n_k] == fish:
+                            k_fish += 1
+                        elif self.state[n_i][n_k] == shrimp:
+                            k_shrimp += 1
 
-                if self.state[i][k] == fish:
-                    if k_fish < 2 or k_fish > 3:
-                        new_r.append(0)
-                    else:
+                    if self.state[i][k] == fish:
+                        if k_fish < 2 or k_fish > 3:
+                            new_r.append(0)
+                        else:
+                            new_r.append(2)
+                    elif self.state[i][k] == shrimp:
+                        if k_shrimp < 2 or k_shrimp > 3:
+                            new_r.append(0)
+                        else:
+                            new_r.append(3)
+                    elif k_fish == fish and k_shrimp == shrimp:
                         new_r.append(2)
-                elif self.state[i][k] == shrimp:
-                    if k_shrimp < 2 or k_shrimp > 3:
-                        new_r.append(0)
+                    elif k_fish == 3:
+                        new_r.append(2)
                     else:
-                        new_r.append(3)
-                elif k_fish == fish and k_shrimp == shrimp:
-                    new_r.append(2)
-                elif k_fish == 3:
-                    new_r.append(2)
-                else:
-                    new_r.append(0)
+                        new_r.append(0)
 
             new_state.append(new_r)
 
